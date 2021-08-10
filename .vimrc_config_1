@@ -1,0 +1,225 @@
+set number " agregamos numeros a vim............................................................................................................................................................................  ↪\...........................................................
+set mouse=a " permite interactuar con el mause en vin
+set numberwidth=1 " seteamos el acho de los numeros
+set clipboard=unnamedplus " permitimos que se copie con el comando y
+syntax enable " habilitamos la sintaxis con color
+set showcmd "mostramos los comandos que escribimos en la parte baja
+set ruler " habilitamos la barra baja para ver en que inea estamos
+set encoding=utf-8 " seteamos la codificacion de archivos
+set showmatch " habilitamos que no muestre los parentecis, corchetes etc que estan cerrando
+" set sw=4 " nos ayuda a la identacion con 2 espacios
+"set relativenumber " agrega posisiones numericas de texto y te dice en que liena estas
+set laststatus=2 " habilitamos que la barra baja siempre sea visible
+"set noshowmode " oculta el mensaje de insert (no se si me gusta)
+set cursorline
+" set cuc cul"
+set foldcolumn=2 " ayuda para poder collapsar codigo
+set foldmethod=indent " ayuda para poder collapsar el codigo
+set foldlevelstart=20 " ayuda para poder collapsar el codigo
+" Búsqueda (https://victorhckinthefreeworld.com/2018/09/20/mejora-tu-experiencia-usando-el-editor-vim/)
+set hlsearch " Resaltamos la busquedas
+set incsearch  " Para realizar búsquedas incrementales mientras estás escribiendo
+set ignorecase " Para realizar búsquedas ignorando si están en mayúsculas o minúsculas
+set smartcase " Para buscar sin tener en cuenta la configuración anterior ignorecase cuando ambos ignorecasey smartcase están activados y el patrón de búsqueda contiene mayúsculas
+set so=5 " https://alldrops.info/posts/vim-drops/2020-09-20_keep_the_cursor_always_vetically_centered/
+
+" Tabuladores y sangrado de texto (https://victorhckinthefreeworld.com/2018/09/20/mejora-tu-experiencia-usando-el-editor-vim/)
+set autoindent " Para alinear automáticamente  la sangría del texto de una línea en un archivo
+set smartindent " El sangrado inteligente utiliza la sintáxis y el estilo del código para alinear el texto
+" set tabstop=4 " Para establecer el número de espacios para mostrar por cada pulsación del tabulador:
+" set shiftwidth=4 " Para establecer el número de espacios para mostrar en una “shift operation” (como ‘>>’ o ‘<<’)
+" set expandtab " Si deseas utilizar espacios en vez de tabulaciones, esta opción inserta espacios cuando se pulsa la tecla tabulador
+set tabstop=4 " "indica cuántos espacios tiene una tabulación. Por defecto 8, yo suelo bajarlo a 4
+set expandtab " convierte las tabulaciones a espacios. El nº de espacios será el definido en :set tabstop
+set shiftwidth=4 " indica el nº de espacios para una indentación
+"Autocompletado en vim"
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+" Deshabilitar los .swp que gerea vim
+set noswapfile
+
+call plug#begin('~/.vim/plugged')
+" Temas
+Plug 'arzg/vim-colors-xcode'
+Plug 'sainnhe/sonokai'
+Plug 'gryf/wombat256grf'
+Plug 'glepnir/oceanic-material'
+Plug 'sickill/vim-monokai'
+Plug 'mhartington/oceanic-next'
+Plug 'sainnhe/edge'
+Plug 'joshdick/onedark.vim'
+"Plug 'ghifarit53/tokyonight-vim'
+" IDE
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree'
+" Este no requiere configuracion ya que solo al usar nerdtree
+" puedes usar control + h y control + l para pasar de una pestaña a otra
+Plug 'christoomey/vim-tmux-navigator'
+"https://github.com/mattn/emmet-vim
+Plug 'mattn/emmet-vim'
+
+"https://github.com/itchyny/lightline.vim
+Plug 'itchyny/lightline.vim'...
+Plug 'tpope/vim-surround'...
+Plug 'preservim/tagbar'...
+Plug 'universal-ctags/ctags'.
+" https://github.com/junegunn/fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Plug 'ycm-core/YouCompleteMe', { 'branch': 'legacy-py2' }
+
+"Plug 'frazrepo/vim-rainbow'
+"Guias de identacion
+Plug 'Yggdroot/indentLine'
+" Plugin para Vue
+Plug 'posva/vim-vue'
+"Autocompletado de javascript"
+Plug 'carlitux/deoplete-ternjs'
+Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
+"Auto completar con nvim
+Plug 'nvim-lua/completion-nvim'
+
+"Los sigueintes 4 plugins son para snipets de pogramacion https://github.com/garbas/vim-snipmate
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+
+" Optional:
+Plug 'honza/vim-snippets'
+"git
+Plug 'tpope/vim-fugitive'
+""  comentar y descomentar
+Plug 'tomtom/tcomment_vim'
+"cerra los pares ahorita estara descomentado"
+Plug 'jiangmiao/auto-pairs'
+"  Auto completa lo que ya se escribio en el archivo"
+Plug 'ervandew/supertab'
+"  No se "
+Plug 'kien/ctrlp.vim'
+""Npm en vim
+"Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
+"Plug 'afshinm/npm.vim'
+"bladee.
+Plug 'jwalton512/vim-blade'
+"Laravel
+Plug 'tpope/vim-dispatch'             "| Optional
+Plug 'tpope/vim-projectionist'        "|
+Plug 'noahfrederick/vim-composer'     "|
+Plug 'noahfrederick/vim-laravel'
+" Autoguardar
+Plug '907th/vim-auto-save'
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/tagbar'
+
+" git
+Plug 'airblade/vim-gitgutter'
+
+
+" Autocompletado con deoplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+
+call plug#end()
+
+""syntax enable
+""colorscheme monokai
+" Theme
+syntax enable
+" for vim 7
+set t_Co=256
+
+" for vim 8
+if (has("termguicolors"))
+set termguicolors
+endif
+
+" colorscheme OceanicNext
+" colorscheme wombat256grf
+colorscheme onedark
+"CONFIGURACION PARA Plug 'easymotion/vim-easymotion'
+" Cuando pulsemos espacio podremos hacer conbinacion de letras
+let mapleader=" "
+" cuando precionamos espacio + s activamos easymotion
+" al hacer eso solo pulsamos las letras que buscamos y el nos dira a donde
+" movernos
+nmap <Leader>s <Plug>(easymotion-s2)
+
+"CONFIGURACION PARA Plug 'scrooloose/nerdtree'
+" para acceder a este solo pulstamos epacio + nt.
+" esto nos abre una pantalla y podemos ver su menu pulsando: m
+nmap <Leader>nt :NERDTreeFind<CR>
+
+"CONFIGURACION PARA EMMET.
+"Plug 'mattn/emmet-vim'
+" Ahora intenta con html:5 y seguido pon una doble coma
+let g:user_emmet_leader_key=','
+
+nnoremap <C-f> :NERDTreeFind<CR>...
+nmap <F8> :TagbarToggle<CR>..
+"Comando para buscar archivos al oprimir F9 este comando es usado por
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+nmap <F9> :GFiles<CR>
+" configuracion de NERDTree
+autocmd VimEnter * NERDTree | wincmd p
+let NERDTreeShowHidden=1
+"Comandos generales
+nnoremap <F1> :set nu!<CR>:set mouse=r<CR>
+nnoremap <F2> :set nu!<CR>:set mouse=a<CR>
+
+" configuracion para frazrepo/vim-rainbow
+"let g:rainbow_active = 1
+"
+"Guias de identacion
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" set list listchars=tab:>-,trail:.,extends:>,precedes:<,space:.
+set showbreak=↪\
+" set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set list listchars=tab:>-,trail:.,extends:>,precedes:<
+
+
+"- CONFIGURACIONES EXTERNAS -.
+source ~/.vim/config/autoclosing.vim
+
+"snipmate
+let g:snipMate = { 'snippet_version' : 1 }
+
+"blade
+" Define some single Blade directives. This variable is used for highlighting only.
+let g:blade_custom_directives = ['datetime', 'javascript']
+
+" Define pairs of Blade directives. This variable is used for highlighting and indentation.
+let g:blade_custom_directives_pairs = {
+-     | \   'markdown': 'endmarkdown',
+|     | \   'cache': 'endcache',
+|     | \ }
+" Activamos el auto guardado
+let g:auto_save = 1  " enable AutoSave on Vim startup
+set updatetime=100
+" let g:auto_save_events = ["InsertLeave", "TextChanged", "CursorHold"]
+"
+"
+"
+"
+"
+"
+"
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+
+" Autocompletado con deoplete
+let g:deoplete#enable_at_startup = 1
