@@ -1,0 +1,290 @@
+set number " agregamos numeros a vim
+set ttymouse=xterm2
+set mouse=a " permite interactuar con el mause en vin
+set numberwidth=1 " seteamos el acho de los numeros
+"set clipboard=unnamedplus " permitimos que se copie con el comando y
+syntax enable " habilitamos la sintaxis con color
+set showcmd "mostramos los comandos que escribimos en la parte baja
+set ruler " habilitamos la barra baja para ver en que inea estamos
+set encoding=utf-8 " seteamos la codificacion de archivos
+set showmatch " habilitamos que no muestre los parentecis, corchetes etc que estan   cerrando
+" set sw=4 " nos ayuda a la identacion con 4 espacios
+"set relativenumber " agrega posisiones numericas de texto y te dice en que liena   estas
+set laststatus=2 " habilitamos que la barra baja siempre sea visible
+"set noshowmode " oculta el mensaje de insert (no se si me gusta)
+set cursorline
+" set cuc cul"  "
+set foldcolumn=2 " ayuda para poder collapsar codigo
+set foldmethod=indent " ayuda para poder collapsar el codigo
+set foldlevelstart=20 " ayuda para poder collapsar el codigo
+" Búsqueda (https://victorhckinthefreeworld.com/2018/09/20/mejora-tu-experiencia-u  sando-el-editor-vim/)
+set hlsearch " Resaltamos la busquedas
+set incsearch  " Para realizar búsquedas incrementales mientras estás escribiendo
+set ignorecase " Para realizar búsquedas ignorando si están en mayúsculas o minúsc  ulas
+set smartcase " Para buscar sin tener en cuenta la configuración anterior ignoreca  se cuando ambos ignorecasey smartcase están activados y el patrón de búsqueda cont  iene mayúsculas
+set so=5 " https://alldrops.info/posts/vim-drops/2020-09-20_keep_the_cursor_always_vetically_centered/
+
+" Tabuladores y sangrado de texto (https://victorhckinthefreeworld.com/2018/09/20/  mejora-tu-experiencia-usando-el-editor-vim/)
+set autoindent " Para alinear automáticamente  la sangría del texto de una línea e  n un archivo
+set smartindent " El sangrado inteligente utiliza la sintáxis y el estilo del códi  go para alinear el texto
+" set tabstop=4 " Para establecer el número de espacios para mostrar por cada pulsac  ión del tabulador:
+" set shiftwidth=4 " Para establecer el número de espacios para mostrar en una “shif  t operation” (como ‘>>’ o ‘<<’)
+" Otro tipo de tabulacion
+set tabstop=4 " "indica cuántos espacios tiene una tabulación. Por defecto 8, yo suelo bajarlo a 4
+set expandtab " convierte las tabulaciones a espacios. El nº de espacios será el definido en :set tabstop
+set shiftwidth=4 " indica el nº de espacios para una indentación
+""Permitimos el backspace en mac"
+set backspace=2
+"deshabilitamos la creacion de archivos swp
+set noswapfile
+set autoindent "Auto indent
+" indent depending on the filetype
+"set smartindent
+set nosmartindent
+filetype indent on
+
+set wrap
+call plug#begin()
+"Plug 'glepnir/oceanic-material'
+" Tema
+Plug 'gryf/wombat256grf'
+Plug 'joshdick/onedark.vim'
+
+
+Plug 'preservim/NERDTree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'PhilRunninger/nerdtree-buffer-ops'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'preservim/tagbar'
+Plug 'universal-ctags/ctags'
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-  dev -o'}
+"Los sigueintes 4 plugins son para snipets de pogramacion https://github.com/garba  s/vim-snipmate
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+" Optional:
+Plug 'honza/vim-snippets'
+"git
+Plug 'tpope/vim-fugitive'
+"  comentar y descomentar
+Plug 'tomtom/tcomment_vim'
+"cerra los pares ahorita estara descomentado"
+Plug 'jiangmiao/auto-pairs'
+"  Auto completa lo que ya se escribio en el archivo"
+Plug 'ervandew/supertab'
+"Laravel
+Plug 'tpope/vim-dispatch'             "| Optional
+Plug 'tpope/vim-projectionist'        "|
+Plug 'noahfrederick/vim-composer'     "|
+Plug 'noahfrederick/vim-laravel'
+"markdown en vim
+Plug 'skanehira/preview-markdown.vim'
+Plug 'MichaelMure/mdr'
+
+"Guias de identacion
+Plug 'Yggdroot/indentLine'
+" Autocompletado https://logico.ar/blog/2019/03/24/configurar-vim-para-desarrollo-web-con-reactjs
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+
+" Airline 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Autosave
+Plug '907th/vim-auto-save'
+
+" git
+Plug 'airblade/vim-gitgutter'
+
+" tabnine
+" Plug 'codota/tabnine-vim'
+" Seleccion multiple
+Plug 'terryma/vim-multiple-cursors'
+" Colores parentecis
+" Plug 'frazrepo/vim-rainbow'
+Plug 'kien/ctrlp.vim'
+" Sintaxis para dockerfile
+" Sintaxis para dockerfile
+Plug 'ekalinin/Dockerfile.vim'
+
+
+"Seleccion multiple
+Plug 'terryma/vim-multiple-cursors'
+" Documentador de php
+Plug 'sumpygump/php-documentor-vim'
+" vim startify
+Plug 'mhinz/vim-startify'
+Plug 'mattn/emmet-vim'
+
+" React
+" Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
+Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
+
+Plug 'posva/vim-vue'
+Plug 'jwalton512/vim-blade'
+Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
+set laststatus=2
+"if !has('gui_running')
+"  set t_Co=256
+"endif
+"Configuramos el tema para wombat256grf
+" set background=dark
+" colorscheme wombat256grf
+" set guifont=DroidSansMono_Nerd_Font:h11
+" Configuracion del tema para onedark.vim
+" for vim 7
+set t_Co=256
+
+" for vim 8
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+colorscheme onedark
+let mapleader=" "
+"CONFIGURACION PARA Plug 'scrooloose/nerdtree'
+" para acceder a este solo pulstamos epacio + nt
+" esto nos abre una pantalla y podemos ver su menu pulsando: m
+nmap <Leader>nt :NERDTreeFind<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
+"nmap <F8> :TagbarToggle<CR>
+"nnoremap <F9> :NERDTree<CR>
+
+"let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
+
+"CONFIGURACION PARA Plug 'scrooloose/nerdtree'
+" para acceder a este solo pulstamos epacio + nt
+" esto nos abre una pantalla y podemos ver su menu pulsando: m
+nmap <Leader>nt :NERDTreeFind<CR>
+
+"CONFIGURACION PARA EMMET
+" Ahora intenta con html:5 y seguido pon una doble coma
+let g:user_emmet_leader_key=','
+
+nnoremap <C-f> :NERDTreeFind<CR>
+nmap <F8> :TagbarToggle<CR>
+"Comando para buscar archivos al oprimir F9 este comando es usado por
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+nmap <F9> :Files<CR>
+" configuracion de NERDTree
+autocmd VimEnter * NERDTree | wincmd p
+let NERDTreeShowHidden=1
+"Comandos generales
+nnoremap <F1> :set nu!<CR>:set mouse=r<CR>:set foldcolumn=0<CR>:IndentLinesToggle<CR>
+nnoremap <F2> :set nu!<CR>:set mouse=a<CR>:set foldcolumn=2<CR>:IndentLinesToggle<CR>
+
+
+" configuracion para frazrepo/vim-rainbow
+"let g:rainbow_active = 1
+"
+"Guias de identacion
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" set list listchars=tab:>-,trail:.,extends:>,precedes:<,space:.
+" set list listchars=tab:>-,trail:.,extends:>,precedes:<
+"- CONFIGURACIONES EXTERNAS -
+" source ~/.vim/config/autoclosing.vim
+
+"snipmate
+let g:snipMate = { 'snippet_version' : 1 }
+
+
+" Configuramos para el autocompletado
+let g:deoplete#enable_at_startup = 1
+
+" Configuramos pipe para terminal
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+
+" Configuramos Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized_flood'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+
+
+"Autosave
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
+
+"vim-gitgutter
+set updatetime=100
+
+
+" Colores parentecis
+" au FileType c,cpp,objc,objcpp call rainbow#load()
+" let g:rainbow_active = 1
+
+" let g:rainbow_load_separately = [
+"     \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"     \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+"     \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"     \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+"     \ ]
+"
+" let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+" let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+"
+
+
+
+"" Tab indentation in other modes and shift-tab for unidenting
+" for command mode
+nmap <S-Tab> <
+" for insert mode
+imap <S-Tab> <Esc><i
+" for visual mode
+vmap <S-Tab> <gv
+vmap <Tab> >gv
+
+
+
+" Copy/paste from system clipboard
+map <C-y> "+y<CR>
+" map <C-p> "+p<CR>
+imap <C-y> "+y<CR>
+" imap <C-p> "+p<CR>
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+
+" configuracion para php documentor
+" inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
+" nnoremap <C-P> :call PhpDocSingle()<CR>
+" vnoremap <C-P> :call PhpDocRange()<CR>
+
+" let g:ctrlp_map = '<c-s>'
+" let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = 'node_modules'
+
+
+
+" configuracion para tmux vim
+
+let g:tmux_navigator_no_mappings = 1
+
+" nnoremap <silent> {ctrl-l} :TmuxNavigateLeft<cr>
+" nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+" nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+" nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+"
+let g:tmux_navigator_save_on_switch = 2
